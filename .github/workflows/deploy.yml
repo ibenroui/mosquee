@@ -23,7 +23,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: rm -rf package-lock.json node_modules && npm install
 
       - name: Inject External Donations
         run: |
