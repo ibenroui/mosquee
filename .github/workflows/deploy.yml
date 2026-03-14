@@ -34,6 +34,12 @@ jobs:
       - name: Build Astro
         run: npm run build
 
+      - name: Sync Env to Netlify
+        run: npx netlify-cli env:set STRIPE_SECRET_KEY ${{ secrets.STRIPE_SECRET_KEY }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
       - name: Deploy to Netlify
         run: npx netlify-cli deploy --prod --dir dist --functions netlify/functions
         env:
