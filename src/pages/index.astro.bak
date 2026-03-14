@@ -1,0 +1,420 @@
+---
+import "../styles/global.css";
+
+// Meta data
+const title = "Projet Rénovation CCMA | Un nouvel élan pour notre Mosquée";
+const description =
+    "Soutenez la rénovation et l'agrandissement du Centre Cultuel des Musulmans d'Annemasse. Une Sadaqa Jariya pour les générations futures.";
+---
+
+<html lang="fr" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --primary: #2d648b;
+                --secondary: #5eb363;
+            }
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            h1,
+            h2,
+            h3 {
+                font-family: "Outfit", sans-serif;
+            }
+        </style>
+    </head>
+    <body class="bg-[#FDFCF9] text-[#1A202C] antialiased">
+        <!-- Navigation -->
+        <nav
+            class="fixed w-full z-50 bg-white/70 backdrop-blur-xl border-b border-white/20"
+        >
+            <div
+                class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center"
+            >
+                <div class="flex items-center gap-3">
+                    <img
+                        src="/logo-ccma.png"
+                        alt="CCMA Logo"
+                        class="h-12 w-auto"
+                    />
+                    <span
+                        class="hidden md:block font-extrabold text-[#2D648B] text-xl tracking-tight"
+                        >CCMA</span
+                    >
+                </div>
+                <div class="flex items-center gap-6">
+                    <a
+                        href="#projet"
+                        class="hidden sm:block text-sm font-medium hover:text-[#2D648B] transition-colors"
+                        >Le Projet</a
+                    >
+                    <a
+                        href="#don"
+                        class="bg-[#2D648B] text-white px-7 py-2.5 rounded-full font-bold text-sm hover:scale-105 hover:shadow-lg hover:shadow-[#2D648B]/20 transition-all active:scale-95"
+                    >
+                        Faire un don
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="relative pt-40 pb-24 overflow-hidden">
+            <div
+                class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-[#5EB363]/5 rounded-full blur-[120px]"
+            >
+            </div>
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative z-10">
+                        <div
+                            class="inline-flex items-center gap-2 bg-[#5EB363]/10 text-[#5EB363] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8"
+                        >
+                            <span class="relative flex h-2 w-2">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5EB363] opacity-75"
+                                ></span>
+                                <span
+                                    class="relative inline-flex rounded-full h-2 w-2 bg-[#5EB363]"
+                                ></span>
+                            </span>
+                            Sadaqa Jariya
+                        </div>
+                        <h1
+                            class="text-5xl md:text-7xl font-black text-[#1A202C] leading-[1.1] tracking-tight"
+                        >
+                            Un nouvel élan pour notre <span
+                                class="bg-gradient-to-r from-[#2D648B] to-[#5EB363] bg-clip-text text-transparent"
+                                >Mosquée.</span
+                            >
+                        </h1>
+                        <p
+                            class="text-xl text-slate-500 mt-8 leading-relaxed max-w-xl font-medium"
+                        >
+                            Plus qu’une rénovation, une nécessité pour
+                            accueillir nos fidèles dans une structure moderne,
+                            inclusive et sécurisée.
+                        </p>
+                        <div class="mt-12 flex flex-wrap gap-5">
+                            <a
+                                href="#don"
+                                class="px-10 py-4.5 bg-[#2D648B] text-white rounded-2xl font-bold text-lg shadow-xl shadow-[#2D648B]/20 hover:shadow-2xl hover:scale-[1.02] transition-all active:scale-95"
+                            >
+                                Contribuer au projet
+                            </a>
+                            <a
+                                href="#projet"
+                                class="px-10 py-4.5 bg-white border-2 border-slate-100 text-[#1A202C] rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all"
+                            >
+                                Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative group lg:ml-auto">
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-[#2D648B] to-[#5EB363] rounded-[2.5rem] blur-2xl opacity-10 group-hover:opacity-20 transition duration-1000"
+                        >
+                        </div>
+                        <div
+                            class="relative bg-white p-3 rounded-[2.5rem] shadow-2xl border border-white"
+                        >
+                            <img
+                                src="/render-3d.png"
+                                alt="Futur CCMA"
+                                class="rounded-[2.2rem] w-full h-auto object-cover aspect-[4/3]"
+                            />
+                            <div
+                                class="absolute bottom-10 left-10 right-10 p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-white/50 hidden md:block"
+                            >
+                                <div class="flex justify-between items-end">
+                                    <div>
+                                        <p
+                                            class="text-xs font-bold uppercase tracking-widest text-[#2D648B]"
+                                        >
+                                            Architecte
+                                        </p>
+                                        <p class="text-lg font-black mt-1">
+                                            Cabinet ARQ
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p
+                                            class="text-xs font-bold uppercase tracking-widest text-slate-400"
+                                        >
+                                            Statut
+                                        </p>
+                                        <p
+                                            class="text-lg font-black mt-1 text-[#5EB363]"
+                                        >
+                                            En cours
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="projet" class="py-24 bg-white border-y border-slate-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-12 text-center">
+                    <div
+                        class="p-8 rounded-[2rem] hover:bg-slate-50 transition-all duration-300 group"
+                    >
+                        <div
+                            class="text-5xl font-black text-[#2D648B] group-hover:scale-110 transition-transform"
+                        >
+                            +380m²
+                        </div>
+                        <p
+                            class="text-slate-400 mt-4 font-bold uppercase tracking-widest text-xs"
+                        >
+                            Agrandissement
+                        </p>
+                        <p class="text-slate-500 mt-2 text-sm leading-relaxed">
+                            De nouveaux espaces pour les salles de cours et la
+                            prière.
+                        </p>
+                    </div>
+                    <div
+                        class="p-8 rounded-[2rem] hover:bg-slate-50 transition-all duration-300 group border-x border-slate-100"
+                    >
+                        <div
+                            class="text-5xl font-black text-[#2D648B] group-hover:scale-110 transition-transform"
+                        >
+                            100%
+                        </div>
+                        <p
+                            class="text-slate-400 mt-4 font-bold uppercase tracking-widest text-xs"
+                        >
+                            Sécurité
+                        </p>
+                        <p class="text-slate-500 mt-2 text-sm leading-relaxed">
+                            Une structure aux normes ERP (Établissement Recevant
+                            du Public).
+                        </p>
+                    </div>
+                    <div
+                        class="p-8 rounded-[2rem] hover:bg-slate-50 transition-all duration-300 group"
+                    >
+                        <div
+                            class="text-5xl font-black text-[#5EB363] group-hover:scale-110 transition-transform"
+                        >
+                            PMR
+                        </div>
+                        <p
+                            class="text-slate-400 mt-4 font-bold uppercase tracking-widest text-xs"
+                        >
+                            Accessibilité
+                        </p>
+                        <p class="text-slate-500 mt-2 text-sm leading-relaxed">
+                            Un ascenseur et des accès adaptés pour tous nos
+                            aînés.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="don" class="py-32 px-6">
+            <div class="max-w-4xl mx-auto">
+                <div
+                    class="relative bg-[#2D648B] rounded-[3rem] p-8 md:p-16 text-center text-white shadow-2xl overflow-hidden group"
+                >
+                    <!-- Background patterns -->
+                    <div
+                        class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_#ffffff_1px,_transparent_1px)] bg-[length:24px_24px]"
+                    >
+                    </div>
+                    <div
+                        class="absolute -bottom-24 -right-24 w-64 h-64 bg-[#5EB363] rounded-full blur-[100px] opacity-30"
+                    >
+                    </div>
+
+                    <div class="relative z-10">
+                        <h2
+                            class="text-4xl md:text-5xl font-black mb-8 leading-tight italic"
+                        >
+                            Investissez pour <br />votre <span
+                                class="underline decoration-[#5EB363] decoration-8 underline-offset-4"
+                                >Au-delà.</span
+                            >
+                        </h2>
+                        <p
+                            class="text-blue-100 text-lg mb-12 max-w-xl mx-auto font-medium leading-relaxed"
+                        >
+                            Chaque euro versé est une graine que vous plantez
+                            pour les générations futures. Participez à l'édifice
+                            de la communauté.
+                        </p>
+
+                        <div
+                            class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto"
+                        >
+                            <button
+                                class="flex flex-col items-center justify-center p-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl transition-all group/btn"
+                            >
+                                <span
+                                    class="text-sm font-bold uppercase tracking-widest mb-1 group-hover/btn:translate-y-[-2px] transition-transform"
+                                    >Don Unique</span
+                                >
+                                <span class="text-3xl font-black">Libre</span>
+                            </button>
+                            <button
+                                class="flex flex-col items-center justify-center p-8 bg-[#5EB363] hover:bg-[#4d9751] rounded-3xl transition-all shadow-xl hover:shadow-[#5EB363]/40 group/btn"
+                            >
+                                <span
+                                    class="text-sm font-bold uppercase tracking-widest mb-1 group-hover/btn:translate-y-[-2px] transition-transform"
+                                    >Don Mensuel</span
+                                >
+                                <span class="text-3xl font-black"
+                                    >Prélèvement</span
+                                >
+                            </button>
+                        </div>
+
+                        <div
+                            class="mt-12 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-8"
+                        >
+                            <div
+                                class="flex items-center gap-2 text-sm font-bold bg-white/5 px-5 py-2 rounded-full border border-white/10"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-[#5EB363]"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                Paiement 100% Sécurisé
+                            </div>
+                            <div
+                                class="flex gap-4 opacity-80 filter grayscale brightness-200"
+                            >
+                                <span
+                                    class="text-xs font-black tracking-widest uppercase border border-white/30 px-2 py-1 rounded"
+                                    >Stripe</span
+                                >
+                                <span
+                                    class="text-xs font-black tracking-widest uppercase border border-white/30 px-2 py-1 rounded"
+                                    >HelloAsso</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-white py-20 mt-20">
+            <div
+                class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-12"
+            >
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center gap-3">
+                        <img
+                            src="/logo-ccma.png"
+                            alt="CCMA Logo"
+                            class="h-10 w-auto brightness-0 invert"
+                        />
+                        <span class="font-black text-2xl tracking-tight"
+                            >CCMA</span
+                        >
+                    </div>
+                    <p class="text-slate-400 mt-6 max-w-sm leading-relaxed">
+                        Le Centre Cultuel des Musulmans d'Annemasse est une
+                        association loi 1901 dédiée à la pratique du culte et à
+                        l'éducation.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Contact</h4>
+                    <ul class="text-slate-400 space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg
+                                class="w-5 h-5 text-[#5EB363] mt-1 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                ></path><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            3 rue des Alpes,<br />74100 Annemasse
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg
+                                class="w-5 h-5 text-[#5EB363]"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 8l7.89 5.26c.45.3.95.45 1.45.45s1 .15 1.45-.45L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                ></path>
+                            </svg>
+                            contact@ccma-annemasse.fr
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Liens</h4>
+                    <ul class="text-slate-400 space-y-4">
+                        <li>
+                            <a
+                                href="#"
+                                class="hover:text-white transition-colors"
+                                >Mentions Légales</a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                class="hover:text-white transition-colors"
+                                >Confidentialité</a>
+                        </li>
+                        <li>
+                            <a href="#don" class="text-white font-bold"
+                                >Nous soutenir</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm"
+            >
+                <p>
+                    © {new Date().getFullYear()} Centre Cultuel des Musulmans d'Annemasse
+                    (CCMA). Tous droits réservés.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

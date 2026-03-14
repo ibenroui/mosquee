@@ -1,23 +1,575 @@
-<!doctype html>
-<html lang="en">
+---
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "CCMA | Centre Cultuel des Musulmans d'Annemasse",
+	description = "Le Centre Cultuel des Musulmans d'Annemasse est une association dédiée à la pratique du culte et à l'éducation religieuse.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
 	<head>
+		<!-- Termly Cookie Consent -->
+		<script
+			type="text/javascript"
+			src="https://app.termly.io/resource-blocker/cdd609eb-0bd8-4300-86da-c928ab7c1200?autoBlock=on"
+			is:inline
+		></script>
+
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="/Png.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+
+		<meta name="description" content={description} />
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<style is:global>
+			:root {
+				--primary: #2d648b;
+				--secondary: #5eb363;
+			}
+			body {
+				font-family: "Inter", sans-serif;
+			}
+			h1,
+			h2,
+			h3 {
+				font-family: "Outfit", sans-serif;
+			}
+			/* Custom Scrollbar for Drawer */
+			.no-scrollbar::-webkit-scrollbar {
+				display: none;
+			}
+			.no-scrollbar {
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+			}
+		</style>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-[#FDFCF9] text-[#1A202C] antialiased">
+		<!-- Sticky Header Wrapper -->
+		<header class="fixed w-full z-50 top-0">
+			<!-- Global Info Banner -->
+			<div
+				class="bg-[#2D648B] text-white py-2.5 px-6 text-center border-b border-white/10 shadow-sm relative"
+			>
+				<p
+					class="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2"
+				>
+					<span
+						class="w-1.5 h-1.5 bg-[#5EB363] rounded-full animate-pulse"
+					></span>
+					Information Travaux : Prières à l'Annexe — 1 ter rue de la Martinière,
+					74100 Ambilly
+				</p>
+			</div>
+
+			<!-- Navigation -->
+			<nav class="bg-white/70 backdrop-blur-xl border-b border-white/20">
+				<div
+					class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center"
+				>
+					<a
+						href="/"
+						class="flex items-center gap-3 hover:scale-105 transition-transform"
+					>
+						<img
+							src="/Png.png"
+							alt="CCMA Logo"
+							class="h-12 w-auto"
+						/>
+						<span
+							class="hidden md:block font-extrabold text-[#2D648B] text-xl tracking-tight"
+							>CCMA</span
+						>
+					</a>
+					<!-- Desktop Menu -->
+					<div class="hidden md:flex items-center gap-8">
+						<a
+							href="/"
+							class="text-sm font-bold hover:text-[#2D648B] transition-colors"
+							>Projet & Don</a
+						>
+						<a
+							href="/qui-sommes-nous"
+							class="text-sm font-bold hover:text-[#2D648B] transition-colors"
+							>L'Histoire</a
+						>
+						<a
+							href="/contact"
+							class="text-sm font-bold hover:text-[#2D648B] transition-colors"
+							>Contact</a
+						>
+						<button
+							id="open-prayer-drawer"
+							class="flex items-center gap-2 px-4 py-2 bg-[#2D648B]/5 text-[#2D648B] rounded-xl font-bold text-sm hover:bg-[#2D648B]/10 transition-all border border-[#2D648B]/10"
+						>
+							<svg
+								class="w-4 h-4"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+								></path>
+							</svg>
+							Horaires
+						</button>
+					</div>
+
+					<!-- Mobile Menu Button -->
+					<div class="flex md:hidden items-center gap-4">
+						<button
+							id="open-prayer-drawer-mobile"
+							class="flex items-center gap-2 px-3 py-2 bg-[#2D648B]/5 text-[#2D648B] rounded-xl hover:bg-[#2D648B]/10 transition-all border border-[#2D648B]/10"
+						>
+							<svg
+								class="w-4 h-4"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+								></path>
+							</svg>
+							<span
+								class="text-xs font-bold uppercase tracking-wider"
+								>Horaires</span
+							>
+						</button>
+						<button
+							id="mobile-menu-btn"
+							class="p-2.5 text-[#2D648B] hover:bg-[#2D648B]/5 rounded-xl transition-all"
+						>
+							<svg
+								class="w-6 h-6"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 6h16M4 12h16m-7 6h7"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<main class="pt-32 md:pt-36">
+			<slot />
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-slate-900 text-white py-20 mt-20">
+			<div
+				class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-12"
+			>
+				<div class="col-span-1 lg:col-span-2">
+					<div class="flex items-center gap-3">
+						<img
+							src="/Png.png"
+							alt="CCMA Logo"
+							class="h-10 w-auto brightness-0 invert"
+						/>
+						<span class="font-black text-2xl tracking-tight"
+							>CCMA</span
+						>
+					</div>
+					<p class="text-slate-400 mt-6 max-w-sm leading-relaxed">
+						Le Centre Cultuel des Musulmans d'Annemasse est une
+						association loi 1901 dédiée à la pratique du culte et à
+						l'éducation religieuse.
+					</p>
+				</div>
+				<div>
+					<h4 class="font-bold text-lg mb-6 text-[#5EB363]">
+						Contact
+					</h4>
+					<ul class="text-slate-400 space-y-4">
+						<li class="flex items-start gap-3">
+							<svg
+								class="w-5 h-5 text-[#5EB363] mt-1 shrink-0"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+								></path><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+							</svg>
+							3 rue des Alpes,<br />74100 Annemasse
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="font-bold text-lg mb-6 text-white">
+						Suivez-nous
+					</h4>
+					<div class="flex gap-4">
+						<a
+							href="https://whatsapp.com/channel/0029VaYslVkD38CWkMI70K1c"
+							target="_blank"
+							class="p-3 bg-white/5 hover:bg-[#25D366] rounded-xl transition-all border border-white/10 group"
+						>
+							<img
+								src="/whatsapp.svg"
+								class="w-6 h-6 group-hover:scale-110 transition-transform"
+								alt="WhatsApp"
+							/>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div
+				class="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm"
+			>
+				<p>
+					© {new Date().getFullYear()} Centre Cultuel des Musulmans d'Annemasse
+					(CCMA). Tous droits réservés.
+				</p>
+				<div class="flex items-center justify-center gap-4 mt-4">
+					<a
+						href="#"
+						class="termly-display-preferences hover:text-[#5EB363] transition-colors"
+						>Préférences de consentement</a
+					>
+					<a
+						href="/politique-de-confidentialite"
+						class="hover:text-[#5EB363] transition-colors"
+						>Politique de confidentialité</a
+					>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Prayer Times Side Drawer -->
+		<div id="prayer-drawer" class="fixed inset-0 z-[100] invisible">
+			<!-- Overlay -->
+			<div
+				id="drawer-overlay"
+				class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+			>
+			</div>
+
+			<!-- Drawer Panel -->
+			<div
+				id="drawer-panel"
+				class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl translate-x-full transition-transform duration-500 ease-out flex flex-col"
+			>
+				<div
+					class="p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50"
+				>
+					<div>
+						<h2 class="text-2xl font-black text-slate-900">
+							Horaires de Prière
+						</h2>
+						<p
+							class="text-sm text-[#2D648B] font-bold uppercase tracking-widest mt-1"
+						>
+							Annemasse & Agglo
+						</p>
+					</div>
+					<button
+						id="close-prayer-drawer"
+						class="p-3 hover:bg-white rounded-2xl transition-colors border border-transparent hover:border-slate-200"
+					>
+						<svg
+							class="w-6 h-6"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							><path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M6 18L18 6M6 6l12 12"></path>
+						</svg>
+					</button>
+				</div>
+
+				<div class="flex-1 overflow-y-auto p-8 no-scrollbar">
+					<div
+						class="mb-8 p-6 bg-[#5EB363]/10 border border-[#5EB363]/20 rounded-3xl"
+					>
+						<div class="flex items-center gap-4 mb-3">
+							<div
+								class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm"
+							>
+								<svg
+									class="w-6 h-6 text-[#5EB363]"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+									></path><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+									></path>
+								</svg>
+							</div>
+							<h4 class="font-extrabold text-[#1A202C]">
+								Lieu des Prières
+							</h4>
+						</div>
+						<p class="text-slate-600 text-sm leading-relaxed">
+							En raison des travaux de rénovation, toutes les
+							prières ont actuellement lieu à l'<strong
+								>Annexe du CCMA</strong
+							> : <br />
+							<span
+								class="text-[#2D648B] font-bold underline italic"
+								>1 ter rue de la Martinière, 74100 Ambilly</span
+							>.
+						</p>
+					</div>
+
+					<!-- Widget Placeholder -->
+					<div
+						class="min-h-[500px] bg-slate-50 rounded-3xl p-4 border border-slate-100"
+					>
+						<a
+							data-masjidbox-widget="lnJ5Bnz_foW63o_W9VUjw"
+							data-masjidbox-ifr
+							href="https://masjidbox.com/horaires-de-priere/ccma"
+							>Horaires de prière CCMA</a
+						>
+					</div>
+				</div>
+
+				<div class="p-8 border-t border-slate-100 bg-slate-50">
+					<a
+						href="/#don"
+						class="block w-full py-4 bg-[#2D648B] text-white text-center rounded-2xl font-bold shadow-lg shadow-[#2D648B]/20 hover:scale-[1.02] transition-all"
+						>Soutenir le CCMA</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mobile Navigation Drawer -->
+		<div id="mobile-menu" class="fixed inset-0 z-[110] invisible">
+			<div
+				id="mobile-menu-overlay"
+				class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+			>
+			</div>
+			<div
+				id="mobile-menu-panel"
+				class="absolute right-0 top-0 h-full w-full max-w-[300px] bg-white shadow-2xl translate-x-full transition-transform duration-500 ease-out flex flex-col"
+			>
+				<div
+					class="p-6 border-b border-slate-100 flex items-center justify-between"
+				>
+					<span class="font-black text-[#2D648B] text-xl">Menu</span>
+					<button
+						id="close-mobile-menu"
+						class="p-2 hover:bg-slate-50 rounded-xl transition-colors"
+					>
+						<svg
+							class="w-6 h-6 text-slate-400"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M6 18L18 6M6 6l12 12"></path>
+						</svg>
+					</button>
+				</div>
+				<div class="flex-1 p-6 space-y-2">
+					<a
+						href="/"
+						class="block p-4 text-lg font-bold text-slate-900 hover:bg-[#2D648B]/5 rounded-2xl transition-all"
+						>Projet & Don</a
+					>
+					<a
+						href="/qui-sommes-nous"
+						class="block p-4 text-lg font-bold text-slate-900 hover:bg-[#2D648B]/5 rounded-2xl transition-all"
+						>L'Histoire</a
+					>
+					<a
+						href="/contact"
+						class="block p-4 text-lg font-bold text-slate-900 hover:bg-[#2D648B]/5 rounded-2xl transition-all"
+						>Contact</a
+					>
+					<div class="pt-6 border-t border-slate-100 mt-6">
+						<p
+							class="text-xs font-bold text-slate-400 uppercase tracking-widest px-4 mb-4"
+						>
+							Communauté
+						</p>
+						<a
+							href="https://whatsapp.com/channel/0029VaYslVkD38CWkMI70K1c"
+							target="_blank"
+							class="flex items-center gap-4 p-4 bg-[#25D366]/5 text-[#25D366] rounded-2xl font-bold"
+						>
+							<img
+								src="/whatsapp.svg"
+								class="w-6 h-6"
+								alt="WhatsApp"
+							/>
+							Canal WhatsApp
+						</a>
+					</div>
+				</div>
+				<div class="p-6 bg-slate-50 border-t border-slate-100">
+					<a
+						href="/#don"
+						class="block w-full py-4 bg-[#2D648B] text-white text-center rounded-2xl font-bold shadow-lg shadow-[#2D648B]/20"
+						>Soutenir le CCMA</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- WhatsApp Floating Button -->
+		<a
+			href="https://whatsapp.com/channel/0029VaYslVkD38CWkMI70K1c"
+			target="_blank"
+			class="fixed bottom-8 right-8 z-[100] group"
+		>
+			<div
+				class="absolute inset-0 bg-[#25D366] rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity animate-pulse"
+			>
+			</div>
+			<div
+				class="relative bg-[#25D366] text-white p-4 rounded-full shadow-2xl transform hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+			>
+				<img
+					src="/whatsapp.svg"
+					class="w-8 h-8 brightness-0 invert"
+					alt="WhatsApp"
+				/>
+			</div>
+			<div
+				class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-xl border border-slate-100 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
+			>
+				<p class="text-slate-900 font-bold text-sm">Canal WhatsApp</p>
+			</div>
+		</a>
+
+		<script is:inline>
+			const drawer = document.getElementById("prayer-drawer");
+			const overlay = document.getElementById("drawer-overlay");
+			const panel = document.getElementById("drawer-panel");
+			const openBtn = document.getElementById("open-prayer-drawer");
+			const closeBtn = document.getElementById("close-prayer-drawer");
+
+			function openDrawer() {
+				drawer.classList.remove("invisible");
+				setTimeout(() => {
+					overlay.classList.add("opacity-100");
+					panel.classList.remove("translate-x-full");
+				}, 10);
+				document.body.style.overflow = "hidden";
+			}
+
+			function closeDrawer() {
+				overlay.classList.remove("opacity-100");
+				panel.classList.add("translate-x-full");
+				setTimeout(() => {
+					drawer.classList.add("invisible");
+					document.body.style.overflow = "";
+				}, 500);
+			}
+
+			openBtn.addEventListener("click", openDrawer);
+			const openPrayerMobileBtn = document.getElementById(
+				"open-prayer-drawer-mobile"
+			);
+			if (openPrayerMobileBtn) {
+				openPrayerMobileBtn.addEventListener("click", openDrawer);
+			}
+			closeBtn.addEventListener("click", closeDrawer);
+			overlay.addEventListener("click", closeDrawer);
+
+			// Mobile Menu Logic
+			const mobileMenu = document.getElementById("mobile-menu");
+			const mobileOverlay = document.getElementById(
+				"mobile-menu-overlay"
+			);
+			const mobilePanel = document.getElementById("mobile-menu-panel");
+			const mobileBtn = document.getElementById("mobile-menu-btn");
+			const closeMobileBtn = document.getElementById("close-mobile-menu");
+
+			function openMobileMenu() {
+				mobileMenu.classList.remove("invisible");
+				setTimeout(() => {
+					mobileOverlay.classList.add("opacity-100");
+					mobilePanel.classList.remove("translate-x-full");
+				}, 10);
+				document.body.style.overflow = "hidden";
+			}
+
+			function closeMobileMenu() {
+				mobileOverlay.classList.remove("opacity-100");
+				mobilePanel.classList.add("translate-x-full");
+				setTimeout(() => {
+					mobileMenu.classList.add("invisible");
+					document.body.style.overflow = "";
+				}, 500);
+			}
+
+			mobileBtn.addEventListener("click", openMobileMenu);
+			closeMobileBtn.addEventListener("click", closeMobileMenu);
+			mobileOverlay.addEventListener("click", closeMobileMenu);
+			mobileMenu.querySelectorAll("a").forEach((link) => {
+				link.addEventListener("click", closeMobileMenu);
+			});
+
+			// Masjidbox Loader
+			(function (w) {
+				function async_load() {
+					var s = w.document.createElement("script");
+					s.type = "text/javascript";
+					s.async = true;
+					s.defer = true;
+					s.src = "https://masjidbox.com/widgets/loader.js";
+					var x = w.document.getElementsByTagName("script")[0];
+					x.parentNode.insertBefore(s, x);
+				}
+				if (w.attachEvent) w.attachEvent("onload", async_load);
+				else w.addEventListener("load", async_load, false);
+			})(window);
+		</script>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

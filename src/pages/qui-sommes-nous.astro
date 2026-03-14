@@ -1,0 +1,232 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Notre Histoire | CCMA Annemasse";
+const description =
+    "Découvrez le parcours fascinant du CCMA : de ses humbles débuts en 1979 à son rôle central pour la communauté musulmane d'Annemasse.";
+---
+
+<Layout title={title} description={description}>
+    <section class="relative pt-32 pb-24 overflow-hidden bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div
+                class="inline-flex items-center gap-2 bg-[#2D648B]/5 text-[#2D648B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8"
+            >
+                Héritage & Valeurs
+            </div>
+            <h1
+                class="text-5xl md:text-7xl font-black text-[#1A202C] leading-tight mb-12"
+            >
+                Une histoire de <br /><span class="text-[#2D648B]">Volonté</span
+                > et de <span class="text-[#5EB363]">Foi.</span>
+            </h1>
+
+            <div
+                class="prose prose-slate prose-lg max-w-none space-y-12 text-slate-600 font-medium leading-relaxed"
+            >
+                <div class="relative group my-16">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-tr from-[#2D648B]/10 to-[#5EB363]/10 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-75 transition-opacity"
+                    >
+                    </div>
+                    <!-- Newspaper/Historical Image -->
+                    <div
+                        class="relative bg-slate-100 rounded-[2rem] overflow-hidden shadow-xl border border-slate-200"
+                    >
+                        <img
+                            src="/Presse1.jpg"
+                            alt="Article de journal historique CCMA"
+                            class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity"
+                        />
+                        <div
+                            class="absolute bottom-6 left-6 right-6 p-4 bg-white/80 backdrop-blur-md rounded-xl border border-white/50"
+                        >
+                            <p
+                                class="text-xs font-bold text-slate-500 uppercase tracking-widest text-center"
+                            >
+                                Archive historique du CCMA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h2
+                        class="text-3xl font-black text-slate-900 flex items-center gap-4"
+                    >
+                        <span class="w-12 h-1 bg-[#2D648B] rounded-full"></span>
+                        1979 : Les Débuts
+                    </h2>
+                    <p>
+                        C’est par la farouche volonté des musulmans de
+                        l’agglomération d'Annemasse que le centre a vu le jour.
+                        Officiellement reconnu le <strong>12 juin 1979</strong>,
+                        il marquait le premier pas d'une communauté désireuse de
+                        vivre son culte dans la dignité.
+                    </p>
+                    <div
+                        class="bg-orange-50 p-8 rounded-[2rem] border border-orange-100 italic relative overflow-hidden"
+                    >
+                        <svg
+                            class="absolute -top-4 -left-4 w-24 h-24 text-orange-200/50"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V13H15.017C14.4647 13 14.017 12.5523 14.017 12V6C14.017 5.44772 14.4647 5 15.017 5H21.017C21.5693 5 22.017 5.44772 22.017 6V13C22.017 13.5523 21.5693 14 21.017 14H20.017V17C20.017 19.2091 18.2261 21 16.017 21H14.017ZM2.01697 21L2.01697 18C2.01697 16.8954 2.9124 16 4.01697 16H7.01697V13H3.01697C2.46468 13 2.01697 12.5523 2.01697 12V6C2.01697 5.44772 2.46468 5 3.01697 5H9.01697C9.56925 5 10.017 5.44772 10.017 6V13C10.017 13.5523 9.56925 14 9.01697 14H8.01697V17C8.01697 19.2091 6.2261 21 4.01697 21H2.01697Z"
+                            ></path>
+                        </svg>
+                        <p
+                            class="relative z-10 text-orange-900 leading-relaxed font-semibold"
+                        >
+                            "À l'époque, les fidèles devaient s'accommoder de
+                            prier dans des caves sordides, souvent sous les
+                            conduites d'égouts. C'était une épreuve de foi
+                            constante."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h2
+                        class="text-3xl font-black text-slate-900 flex items-center gap-4"
+                    >
+                        <span class="w-12 h-1 bg-[#5EB363] rounded-full"></span>
+                        1983 : La Maison de la Foi
+                    </h2>
+                    <p>
+                        L'histoire du CCMA a basculé en 1983 grâce à un
+                        bienfaiteur anonyme. Choqué par les conditions de prière
+                        précaires, il décida d'offrir à la communauté une salle
+                        de prière digne. Il acheta alors la maison située au <strong
+                            >3, rue des Alpes à Ambilly</strong
+                        >.
+                    </p>
+                    <p>
+                        Cette maison de 211m², devenue la première mosquée de
+                        Haute-Savoie, est le symbole de la solidarité et de la
+                        générosité qui animent notre centre. Elle a permis
+                        d'accueillir dignement les fidèles et de lancer les
+                        premières activités éducatives.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <h2
+                        class="text-3xl font-black text-slate-900 flex items-center gap-4"
+                    >
+                        <span class="w-12 h-1 bg-slate-200 rounded-full"></span>
+                        1998 : Vers le Centre Culturel
+                    </h2>
+                    <p>
+                        L'association a évolué en 1998 pour devenir le <strong
+                            >Centre Culturel des Musulmans d'Annemasse (C.C.M.A)</strong
+                        >. Ce changement marquait une volonté d'ouverture et de
+                        diversification des missions : au-delà du culte, le
+                        centre est devenu un acteur social et éducatif majeur.
+                    </p>
+                    <p>
+                        Aujourd’hui, l’association organise les célébrations
+                        religieuses du culte musulman, notamment les fêtes de
+                        l’Aïd, et assure des activités d’enseignement et de
+                        transmission religieuse. Elle met également en place des
+                        actions éducatives et d’accompagnement des jeunes dans
+                        le respect des principes républicains et du
+                        vivre-ensemble.
+                    </p>
+                </div>
+
+                <div class="space-y-6 mt-16">
+                    <h2
+                        class="text-3xl font-black text-slate-900 flex items-center gap-4"
+                    >
+                        <span class="w-12 h-1 bg-slate-200 rounded-full"></span>
+                        2024 : Une annexe pour accompagner la rénovation de la mosquée
+                    </h2>
+                    <p>
+                        Afin d’assurer la continuité des activités cultuelles et
+                        d’enseignement religieux, le Centre Culturel des
+                        Musulmans d’Annemasse (CCMA) a acquis en 2024 un
+                        bâtiment situé rue de la Martinière à Ambilly.
+                    </p>
+                    <p>
+                        Des travaux de rénovation et d’aménagement ont été
+                        réalisés entre 2024 et début 2025 afin d’y aménager un
+                        espace adapté à l’accueil des fidèles.
+                    </p>
+                    <p>
+                        Cette annexe permet d’assurer temporairement l’exercice
+                        du culte musulman ainsi que les activités d’enseignement
+                        et de transmission religieuse organisées par
+                        l’association, durant la période de rénovation de la
+                        mosquée située rue des Alpes à Ambilly, siège historique
+                        du CCMA.
+                    </p>
+                    <p>
+                        Cette initiative vise à garantir la continuité du culte
+                        dans le respect des lois de la République, des principes
+                        de laïcité et du vivre-ensemble au sein du territoire.
+                    </p>
+                </div>
+
+                <div class="my-16 grid md:grid-cols-2 gap-8">
+                    <div
+                        class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100"
+                    >
+                        <h4 class="text-2xl font-black text-slate-900 mb-4">
+                            Notre Mission
+                        </h4>
+                        <p class="text-sm leading-relaxed italic">
+                            Faire de ce lieu un espace de spiritualité,
+                            d’éducation, de dialogue, de réflexion et d’échange.
+                            Proposer un Islam ouvert sur la cité.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-[#2D648B] p-10 rounded-[2.5rem] text-white shadow-xl shadow-[#2D648B]/20"
+                    >
+                        <h4 class="text-2xl font-black mb-4">Notre Vision</h4>
+                        <p class="text-sm leading-relaxed opacity-90">
+                            Construire un avenir où chaque musulmans d'Annemasse
+                            peut s'épanouir dans sa foi tout en contribuant
+                            positivement à la société française.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h2
+                        class="text-3xl font-black text-slate-900 flex items-center gap-4"
+                    >
+                        <span class="w-12 h-1 bg-[#5EB363] rounded-full"></span>
+                        Le Projet de Demain
+                    </h2>
+                    <p>
+                        Le projet de rénovation actuel s'inscrit dans la
+                        continuité de cette histoire. Il ne s'agit pas seulement
+                        de briques et de ciment, mais de pérenniser l’œuvre
+                        commencée en 1979 pour les générations futures.
+                    </p>
+                    <div class="pt-8">
+                        <a
+                            href="/#don"
+                            class="inline-flex items-center gap-3 px-10 py-4 bg-[#2D648B] text-white rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-[#2D648B]/20"
+                        >
+                            Soutenir le Projet de Rénovation
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

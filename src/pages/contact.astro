@@ -1,0 +1,426 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Contact | Centre des Musulmans d'Annemasse";
+const description =
+    "Contactez le CCMA pour toute question concernant le culte, l'éducation ou le projet de rénovation.";
+---
+
+<Layout title={title} description={description}>
+    <section class="relative pt-32 pb-24 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div
+                    class="inline-flex items-center gap-2 bg-[#2D648B]/5 text-[#2D648B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8"
+                >
+                    Nous Contacter
+                </div>
+                <h1
+                    class="text-5xl md:text-6xl font-black text-[#1A202C] leading-tight mb-6"
+                >
+                    Une question ? <br />Écrivez-nous.
+                </h1>
+                <p class="text-lg text-slate-500 font-medium max-w-xl mx-auto">
+                    Que ce soit pour le projet de rénovation, l'éducation ou une
+                    demande administrative, nous vous répondrons dans les plus
+                    brefs délais.
+                </p>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row justify-center gap-8 md:gap-12 mb-20"
+            >
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-50 text-center w-full md:w-80"
+                >
+                    <div
+                        class="w-12 h-12 bg-[#2D648B]/10 rounded-full flex items-center justify-center mx-auto mb-6"
+                    >
+                        <svg
+                            class="w-6 h-6 text-[#2D648B]"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                            ></path><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Siège Social</h3>
+                    <p class="text-sm text-slate-500">
+                        3 rue des Alpes<br />74100 Annemasse
+                    </p>
+                </div>
+
+                <a
+                    href="https://whatsapp.com/channel/0029VaYslVkD38CWkMI70K1c"
+                    target="_blank"
+                    class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-50 text-center hover:shadow-2xl hover:scale-[1.02] transition-all group w-full md:w-80"
+                >
+                    <div
+                        class="w-12 h-12 bg-[#25D366]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#25D366]/20 transition-colors"
+                    >
+                        <img
+                            src="/whatsapp.svg"
+                            alt="WhatsApp"
+                            class="w-8 h-8 object-contain"
+                        />
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">WhatsApp</h3>
+                    <p class="text-sm text-slate-500 font-bold text-[#25D366]">
+                        Canal Info CCMA
+                    </p>
+                </a>
+            </div>
+
+            <div
+                class="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl border border-slate-100"
+            >
+                <!-- Success Message -->
+                <div
+                    id="success-msg"
+                    class="hidden mb-8 p-10 bg-gradient-to-br from-[#5EB363]/10 to-[#5EB363]/5 border border-[#5EB363]/20 rounded-[2.5rem] text-center backdrop-blur-sm animate-in fade-in zoom-in duration-500"
+                >
+                    <div
+                        class="w-20 h-20 bg-gradient-to-tr from-[#5EB363] to-[#82C987] text-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-[#5EB363]/40 relative"
+                    >
+                        <div
+                            class="absolute inset-0 bg-[#5EB363] rounded-full blur-xl opacity-30 animate-pulse"
+                        >
+                        </div>
+                        <svg
+                            class="w-10 h-10 relative z-10"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="3"
+                                d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h4
+                        class="text-3xl font-black text-slate-900 mb-3 tracking-tight"
+                    >
+                        Message Envoyé !
+                    </h4>
+                    <p
+                        class="text-slate-600 font-bold text-lg max-w-sm mx-auto leading-relaxed italic"
+                    >
+                        Nous avons bien reçu votre demande et reviendrons vers
+                        vous très rapidement.
+                    </p>
+                </div>
+
+                <!-- Modern Alert System (Hidden by default) -->
+                <div
+                    id="form-error"
+                    class="hidden mb-8 p-6 bg-rose-50 border border-rose-100 rounded-3xl flex items-center gap-5 animate-in slide-in-from-top-4 duration-300"
+                >
+                    <div
+                        class="w-12 h-12 bg-rose-500 text-white rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-rose-200"
+                    >
+                        <svg
+                            class="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2.5"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h5
+                            class="font-black text-rose-900 text-sm italic uppercase tracking-widest"
+                        >
+                            Attention
+                        </h5>
+                        <p
+                            id="error-text"
+                            class="text-xs text-rose-600 font-bold mt-0.5"
+                        >
+                        </p>
+                    </div>
+                </div>
+
+                <form
+                    id="contact-form"
+                    method="POST"
+                    class="space-y-6 transition-all duration-500"
+                    novalidate
+                >
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label
+                                class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                                >Nom Complet</label
+                            >
+                            <input
+                                type="text"
+                                name="name"
+                                required
+                                class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#2D648B] focus:bg-white transition-all"
+                                placeholder="Votre nom"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                                >Email</label
+                            >
+                            <input
+                                type="email"
+                                name="email"
+                                required
+                                class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#2D648B] focus:bg-white transition-all"
+                                placeholder="votre@email.com"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                            >Sujet</label
+                        >
+                        <select
+                            name="subject"
+                            required
+                            class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#2D648B] focus:bg-white transition-all appearance-none cursor-pointer"
+                        >
+                            <option value="" disabled selected
+                                >Choisissez un sujet</option
+                            >
+                            <option value="Don & Projet"
+                                >Projet de Rénovation / Dons</option
+                            >
+                            <option value="Education"
+                                >Éducation religieuse & Soutien</option
+                            >
+                            <option value="Administratif"
+                                >Demande administrative</option
+                            >
+                            <option value="Autre">Autre demande</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                            >Message</label
+                        >
+                        <textarea
+                            name="message"
+                            required
+                            rows="5"
+                            class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#2D648B] focus:bg-white transition-all resize-none"
+                            placeholder="Comment pouvons-nous vous aider ?"
+                        ></textarea>
+                    </div>
+                    <div class="flex flex-col items-center gap-6">
+                        <div data-netlify-recaptcha="true"></div>
+                        <button
+                            type="submit"
+                            class="w-full py-5 bg-[#2D648B] text-white rounded-2xl font-black text-lg shadow-xl shadow-[#2D648B]/20 hover:scale-[1.01] transition-all"
+                            >Envoyer le message</button
+                        >
+                    </div>
+                </form>
+            </div>
+
+            <div
+                class="mt-20 p-8 bg-orange-50 rounded-[2rem] border border-orange-100 flex items-center gap-6"
+            >
+                <div
+                    class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm"
+                >
+                    <svg
+                        class="w-8 h-8 text-orange-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        ></path><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h4 class="font-bold text-orange-900 mb-1">
+                        Prière à l'annexe (Martinière)
+                    </h4>
+                    <p class="text-sm text-orange-700">
+                        Pendant la durée des travaux, veuillez noter que la
+                        prière a lieu à l'annexe du CCMA située rue de la
+                        Martinière.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script is:inline>
+        const form = document.getElementById("contact-form");
+        const successMsg = document.getElementById("success-msg");
+        const errorMsg = document.getElementById("form-error");
+        const errorText = document.getElementById("error-text");
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        function showError(msg) {
+            errorText.innerText = msg;
+            errorMsg.classList.remove("hidden");
+            errorMsg.classList.add("animate-shake");
+
+            // Senior UX: Highlight invalid fields
+            form.querySelectorAll("input, select, textarea").forEach((el) => {
+                if (el.hasAttribute("required") && !el.value) {
+                    el.classList.add("ring-2", "ring-rose-400", "bg-rose-50");
+                } else {
+                    el.classList.remove(
+                        "ring-2",
+                        "ring-rose-400",
+                        "bg-rose-50"
+                    );
+                }
+            });
+
+            setTimeout(() => errorMsg.classList.remove("animate-shake"), 500);
+            errorMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            errorMsg.classList.add("hidden");
+
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get("name"),
+                email: formData.get("email"),
+                subject: formData.get("subject"),
+                message: formData.get("message"),
+                recaptchaToken:
+                    typeof grecaptcha !== "undefined"
+                        ? grecaptcha.getResponse()
+                        : null,
+            };
+
+            // 1. Validation Logic
+            if (!data.name || !data.email || !data.subject || !data.message) {
+                showError("Veuillez remplir tous les champs obligatoires.");
+                return;
+            }
+
+            // 2. reCAPTCHA Logic (Senior robust check)
+            if (!data.recaptchaToken) {
+                showError(
+                    "Le reCAPTCHA est obligatoire. Veuillez prouver que vous n'êtes pas un robot."
+                );
+                return;
+            }
+
+            // 3. Premium Loading State
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.classList.add("opacity-50", "cursor-not-allowed");
+            submitBtn.innerHTML = `
+                <div class="flex items-center justify-center gap-3">
+                    <svg class="animate-spin h-6 w-6 text-white" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span class="font-black italic uppercase text-sm tracking-widest">Envoi en cours...</span>
+                </div>
+            `;
+
+            try {
+                // Call dedicated API function directly
+                const response = await fetch("/.netlify/functions/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Sophisticated transition to success
+                    form.classList.add("opacity-0", "translate-y-10");
+                    setTimeout(() => {
+                        form.classList.add("hidden");
+                        successMsg.classList.remove("hidden");
+                        successMsg.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                        });
+                    }, 500);
+                } else {
+                    throw new Error(
+                        result.error || `Erreur serveur (${response.status})`
+                    );
+                }
+            } catch (error) {
+                console.error("Form error:", error);
+                showError("Désolé, l'envoi a échoué. " + error.message);
+                submitBtn.disabled = false;
+                submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
+                submitBtn.innerHTML = originalBtnHtml;
+            }
+        });
+
+        // Clear highlight on focus
+        form.querySelectorAll("input, select, textarea").forEach((el) => {
+            el.addEventListener("focus", () =>
+                el.classList.remove("ring-2", "ring-rose-400", "bg-rose-50")
+            );
+        });
+    </script>
+
+    <style is:global>
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            20%,
+            60% {
+                transform: translateX(-7px);
+            }
+            40%,
+            80% {
+                transform: translateX(7px);
+            }
+        }
+        .animate-shake {
+            animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        /* Customize recaptcha positioning if needed */
+        .g-recaptcha {
+            transform: scale(0.9);
+            transform-origin: center;
+        }
+        @media (min-width: 640px) {
+            .g-recaptcha {
+                transform: scale(1);
+            }
+        }
+    </style>
+</Layout>

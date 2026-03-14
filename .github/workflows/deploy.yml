@@ -1,0 +1,42 @@
+name: Deploy to Netlify
+
+on:
+  workflow_dispatch:
+    inputs:
+      amount:
+        description: 'Montant des dons annexes (€)'
+        required: true
+        default: '0'
+  repository_dispatch:
+    types: [update-donations]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Inject External Donations
+        run: |
+          AMOUNT="${{ github.event.client_payload.amount || github.event.inputs.amount || '0' }}"
+          echo "{\"amount\": \"$AMOUNT\"}" > netlify/functions/external-donations.json
+          echo "Dons annexes injectés : $AMOUNT €"
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Deploy to Netlify
+        run: npx netlify-cli deploy --prod --dir dist --functions netlify/functions
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}

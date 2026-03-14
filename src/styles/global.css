@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes slide {
+        from {
+            background-position: 0 0;
+        }
+
+        to {
+            background-position: 30px 0;
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+        }
+
+        100% {
+            background-position: 200% 0;
+        }
+    }
+}
+
+.animate-gradient {
+    animation: gradient 3s ease infinite;
+}
+
+.animate-slide {
+    animation: slide 1s linear infinite;
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg, transparent 25%, rgba(255, 255, 255, 0.1) 50%, transparent 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Custom Utilities */
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}

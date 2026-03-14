@@ -1,11 +1,1303 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Meta data
+const title = "Projet Rénovation CCMA | Soutenez notre Mosquée";
+const description =
+    "Participez à la rénovation et l'agrandissement du Centre Cultuel des Musulmans d'Annemasse. Une Sadaqa Jariya pour les générations futures.";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={title} description={description}>
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 overflow-hidden">
+        <div
+            class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-[#5EB363]/5 rounded-full blur-[120px]"
+        >
+        </div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative z-10">
+                    <div
+                        class="inline-flex items-center gap-2 bg-[#5EB363]/10 text-[#5EB363] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8"
+                    >
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5EB363] opacity-75"
+                            ></span>
+                            <span
+                                class="relative inline-flex rounded-full h-2 w-2 bg-[#5EB363]"
+                            ></span>
+                        </span>
+                        Sadaqa Jariya
+                    </div>
+                    <h1
+                        class="text-5xl md:text-7xl font-black text-[#1A202C] leading-[1.1] tracking-tight"
+                    >
+                        Un nouvel élan pour notre <span
+                            class="bg-gradient-to-r from-[#2D648B] to-[#5EB363] bg-clip-text text-transparent"
+                            >Mosquée.</span
+                        >
+                    </h1>
+                    <p
+                        class="text-xl text-slate-500 mt-8 leading-relaxed max-w-xl font-medium"
+                    >
+                        Plus qu’une rénovation, une nécessité pour accueillir
+                        nos fidèles dans une structure moderne, inclusive et
+                        sécurisée.
+                    </p>
+                    <div class="mt-12 flex flex-wrap gap-5">
+                        <a
+                            href="#don"
+                            class="px-10 py-4.5 bg-[#2D648B] text-white rounded-2xl font-bold text-lg shadow-xl shadow-[#2D648B]/20 hover:shadow-2xl hover:scale-[1.02] transition-all active:scale-95"
+                        >
+                            Contribuer au projet
+                        </a>
+                        <a
+                            href="#projet"
+                            class="px-10 py-4.5 bg-white border-2 border-slate-100 text-[#1A202C] rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all font-outfit"
+                        >
+                            Voir les détails
+                        </a>
+                    </div>
+                </div>
+                <div class="relative group lg:ml-auto">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-[#2D648B] to-[#5EB363] rounded-[2.5rem] blur-2xl opacity-10 group-hover:opacity-20 transition duration-1000"
+                    >
+                    </div>
+                    <div
+                        class="relative bg-white p-3 rounded-[2.5rem] shadow-2xl border border-white"
+                    >
+                        <img
+                            src="/render-3d.png"
+                            alt="Futur CCMA"
+                            class="rounded-[2.2rem] w-full h-auto object-cover aspect-[4/3]"
+                        />
+                        <div
+                            class="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 p-4 md:p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-white/50"
+                        >
+                            <div class="flex justify-between items-end mb-6">
+                                <div>
+                                    <p
+                                        class="text-xs font-bold uppercase tracking-widest text-[#2D648B]"
+                                    >
+                                        Clos couvert
+                                    </p>
+                                    <p
+                                        class="text-lg font-black mt-1 uppercase"
+                                    >
+                                        Phase Actuelle
+                                    </p>
+                                </div>
+                                <div class="text-right">
+                                    <p
+                                        class="text-xs font-bold uppercase tracking-widest text-slate-400"
+                                    >
+                                        Statut
+                                    </p>
+                                    <p
+                                        class="text-lg font-black mt-1 text-[#5EB363]"
+                                    >
+                                        En cours
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-end">
+                                    <span
+                                        class="text-[9px] font-bold uppercase tracking-[0.1em] text-slate-400"
+                                        >Objectif Collecte</span
+                                    >
+                                    <span
+                                        id="hero-percentage"
+                                        class="text-xs font-black text-[#5EB363]"
+                                    ></span>
+                                </div>
+                                <div
+                                    class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden"
+                                >
+                                    <div
+                                        id="hero-progress-bar"
+                                        class="h-full bg-gradient-to-r from-[#2D648B] to-[#5EB363] transition-all duration-1000"
+                                        style="width: 0%"
+                                    >
+                                    </div>
+                                </div>
+                                <div
+                                    id="hero-collected-text"
+                                    class="text-[9px] font-bold text-slate-400 text-right tabular-nums h-3 rounded bg-slate-50 min-w-[100px] animate-shimmer"
+                                >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="projet" class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div
+                    class="p-8 rounded-[2rem] bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 group"
+                >
+                    <div
+                        class="text-5xl font-black text-[#2D648B] group-hover:scale-110 transition-transform"
+                    >
+                        +600m²
+                    </div>
+                    <p
+                        class="text-slate-400 mt-4 font-bold uppercase tracking-widest text-xs"
+                    >
+                        Agrandissement
+                    </p>
+                    <p
+                        class="text-slate-500 mt-2 text-sm leading-relaxed font-medium"
+                    >
+                        De nouveaux espaces pour les salles de cours et la
+                        prière.
+                    </p>
+                </div>
+                <div
+                    class="p-8 rounded-[2rem] bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 group"
+                >
+                    <div
+                        class="text-5xl font-black text-[#2D648B] group-hover:scale-110 transition-transform"
+                    >
+                        100%
+                    </div>
+                    <p
+                        class="text-slate-400 mt-4 font-bold uppercase tracking-widest text-xs"
+                    >
+                        Sécurité
+                    </p>
+                    <p
+                        class="text-slate-500 mt-2 text-sm leading-relaxed font-medium"
+                    >
+                        Une structure aux normes ERP (Établissement Recevant du
+                        Public).
+                    </p>
+                </div>
+                <div
+                    class="p-8 rounded-[2rem] bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 group"
+                >
+                    <div
+                        class="text-5xl font-black text-[#5EB363] group-hover:scale-110 transition-transform"
+                    >
+                        PMR
+                    </div>
+                    <p
+                        class="text-slate-400 mt-4 font-bold uppercase tracking-widest text-xs"
+                    >
+                        Accessibilité
+                    </p>
+                    <p
+                        class="text-slate-500 mt-2 text-sm leading-relaxed font-medium"
+                    >
+                        Des accès adaptés pour tous les fidèles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Description Section -->
+    <section
+        id="projet-detail"
+        class="py-32 bg-[#FDFCF9] border-t border-slate-100"
+    >
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-start">
+                <div class="space-y-10 lg:sticky lg:top-40">
+                    <div>
+                        <div
+                            class="inline-flex items-center gap-2 bg-[#2D648B]/5 text-[#2D648B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6"
+                        >
+                            Bâtir pour l'avenir
+                        </div>
+                        <h2
+                            class="text-4xl md:text-5xl font-black text-[#1A202C] leading-tight"
+                        >
+                            Un projet d'extension <br />
+                            <span class="text-[#2D648B]"
+                                >nécessaire et ambitieux.</span
+                            >
+                        </h2>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-6 group">
+                            <div
+                                class="w-14 h-14 shrink-0 bg-white rounded-2xl shadow-lg border border-slate-100 flex items-center justify-center group-hover:bg-[#2D648B] transition-colors"
+                            >
+                                <svg
+                                    class="w-7 h-7 text-[#2D648B] group-hover:text-white transition-colors"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-xl font-black text-slate-900 mb-2"
+                                >
+                                    Espaces de Prière
+                                </h4>
+                                <p
+                                    class="text-slate-500 leading-relaxed font-medium"
+                                >
+                                    Bâtir un lieu de recueillement apaisant,
+                                    lumineux et spacieux pour accueillir
+                                    dignement tous les fidèles d'Annemasse.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6 group">
+                            <div
+                                class="w-14 h-14 shrink-0 bg-white rounded-2xl shadow-lg border border-slate-100 flex items-center justify-center group-hover:bg-[#5EB363] transition-colors"
+                            >
+                                <svg
+                                    class="w-7 h-7 text-[#5EB363] group-hover:text-white transition-colors"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-xl font-black text-slate-900 mb-2"
+                                >
+                                    Éducation & Jeunesse
+                                </h4>
+                                <p
+                                    class="text-slate-500 leading-relaxed font-medium"
+                                >
+                                    Créer un centre d'initiation religieuse avec
+                                    un équipement moderne et adapté aux
+                                    apprentissages et à la pratique des plus
+                                    jeunes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Container -->
+                    <div
+                        class="relative bg-slate-900 rounded-[2.5rem] overflow-hidden aspect-video shadow-2xl border-4 border-white group"
+                    >
+                        <iframe
+                            class="absolute inset-0 w-full h-full"
+                            src="https://www.youtube.com/embed/cjsUlaTtR3U"
+                            title="CCMA Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                        >
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="relative pt-12">
+                    <!-- Interactive Progress Card -->
+                    <div
+                        class="bg-white p-8 md:p-10 rounded-[3rem] shadow-2xl border border-slate-100 overflow-hidden relative"
+                    >
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-[#2D648B]/5 rounded-full blur-3xl -mr-16 -mt-16"
+                        >
+                        </div>
+
+                        <h4
+                            class="text-2xl font-black mb-10 flex items-center gap-4"
+                        >
+                            <span class="w-2.5 h-10 bg-[#5EB363] rounded-full"
+                            ></span>
+                            ÉTAPES DU PROJET
+                        </h4>
+
+                        <div class="space-y-6">
+                            <!-- Phase 1 -->
+                            <button
+                                class="step-btn w-full text-left group p-6 rounded-2xl border-2 border-[#5EB363] bg-[#5EB363]/5 transition-all"
+                                data-phase="1"
+                            >
+                                <div
+                                    class="flex items-center justify-between mb-4"
+                                >
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-[#5EB363] text-white flex items-center justify-center font-black italic shadow-lg shadow-[#5EB363]/20"
+                                        >
+                                            01
+                                        </div>
+                                        <h5
+                                            class="text-lg font-black text-slate-900"
+                                        >
+                                            Clos couvert
+                                        </h5>
+                                    </div>
+                                    <svg
+                                        class="w-5 h-5 text-[#5EB363] rotate-180 transition-transform"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div
+                                    class="step-details mt-6 space-y-4 overflow-hidden transition-all duration-300"
+                                >
+                                    <div
+                                        class="flex items-center gap-2 text-[#2D648B]"
+                                    >
+                                        <div
+                                            class="w-1.5 h-1.5 rounded-full bg-[#2D648B]"
+                                        >
+                                        </div>
+                                        <p
+                                            class="text-xs font-black uppercase tracking-widest"
+                                        >
+                                            Objectif Technique
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-[#5EB363]/10"
+                                    >
+                                        <p
+                                            class="text-slate-900 font-bold text-sm mb-2"
+                                        >
+                                            Structure protégée • 250 000 €
+                                        </p>
+                                        <ul class="space-y-2">
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#5EB363]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Fondations & Charpente
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#5EB363]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Isolation & Fenêtres
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p
+                                        class="text-[11px] text-slate-400 italic pl-2 border-l-2 border-slate-100"
+                                    >
+                                        Permet de mettre le bâtiment "hors d’eau
+                                        et hors d’air" pour débuter
+                                        l'aménagement intérieur.
+                                    </p>
+                                </div>
+                            </button>
+
+                            <!-- Phase 2 -->
+                            <button
+                                class="step-btn w-full text-left group p-6 rounded-2xl border-2 border-slate-100 hover:border-[#2D648B]/30 transition-all"
+                                data-phase="2"
+                            >
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-black italic group-hover:bg-[#2D648B]/10 group-hover:text-[#2D648B] transition-colors"
+                                        >
+                                            02
+                                        </div>
+                                        <h5
+                                            class="text-lg font-black text-slate-400 group-hover:text-slate-900 transition-colors"
+                                        >
+                                            Réseaux techniques
+                                        </h5>
+                                    </div>
+                                    <svg
+                                        class="w-5 h-5 text-slate-300 group-hover:translate-y-1 transition-transform"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div
+                                    class="step-details h-0 mt-0 space-y-4 overflow-hidden opacity-0 transition-all duration-300"
+                                >
+                                    <div
+                                        class="flex items-center gap-2 text-[#2D648B]"
+                                    >
+                                        <div
+                                            class="w-1.5 h-1.5 rounded-full bg-[#2D648B]"
+                                        >
+                                        </div>
+                                        <p
+                                            class="text-xs font-black uppercase tracking-widest"
+                                        >
+                                            Énergie & Fluides
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-slate-100"
+                                    >
+                                        <p
+                                            class="text-slate-900 font-bold text-sm mb-2"
+                                        >
+                                            Infrastructure technique
+                                        </p>
+                                        <ul class="space-y-2">
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#2D648B]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Électricité & Plomberie
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#2D648B]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Systèmes VMC & Chauffage
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p
+                                        class="text-[11px] text-slate-400 italic pl-2 border-l-2 border-slate-100"
+                                    >
+                                        Installation de tous les réseaux
+                                        invisibles mais essentiels au confort du
+                                        bâtiment.
+                                    </p>
+                                </div>
+                            </button>
+
+                            <!-- Phase 3 -->
+                            <button
+                                class="step-btn w-full text-left group p-6 rounded-2xl border-2 border-slate-100 hover:border-[#2D648B]/30 transition-all"
+                                data-phase="3"
+                            >
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-black italic group-hover:bg-[#2D648B]/10 group-hover:text-[#2D648B] transition-colors"
+                                        >
+                                            03
+                                        </div>
+                                        <h5
+                                            class="text-lg font-black text-slate-400 group-hover:text-slate-900 transition-colors"
+                                        >
+                                            Cloisons / isolation
+                                        </h5>
+                                    </div>
+                                    <svg
+                                        class="w-5 h-5 text-slate-300 group-hover:translate-y-1 transition-transform"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div
+                                    class="step-details h-0 mt-0 space-y-4 overflow-hidden opacity-0 transition-all duration-300"
+                                >
+                                    <div
+                                        class="flex items-center gap-2 text-[#2D648B]"
+                                    >
+                                        <div
+                                            class="w-1.5 h-1.5 rounded-full bg-[#2D648B]"
+                                        >
+                                        </div>
+                                        <p
+                                            class="text-xs font-black uppercase tracking-widest"
+                                        >
+                                            Espaces Intérieurs
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-slate-100"
+                                    >
+                                        <p
+                                            class="text-slate-900 font-bold text-sm mb-2"
+                                        >
+                                            Second œuvre
+                                        </p>
+                                        <ul class="space-y-2">
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#2D648B]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Cloisons & Faux-plafonds
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#2D648B]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Isolation acoustique
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p
+                                        class="text-[11px] text-slate-400 italic pl-2 border-l-2 border-slate-100"
+                                    >
+                                        Structuration des différentes salles et
+                                        isolation pour une ambiance sereine.
+                                    </p>
+                                </div>
+                            </button>
+
+                            <!-- Phase 4 -->
+                            <button
+                                class="step-btn w-full text-left group p-6 rounded-2xl border-2 border-slate-100 hover:border-[#2D648B]/30 transition-all"
+                                data-phase="4"
+                            >
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-black italic group-hover:bg-[#2D648B]/10 group-hover:text-[#2D648B] transition-colors"
+                                        >
+                                            04
+                                        </div>
+                                        <h5
+                                            class="text-lg font-black text-slate-400 group-hover:text-slate-900 transition-colors"
+                                        >
+                                            Équipements
+                                        </h5>
+                                    </div>
+                                    <svg
+                                        class="w-5 h-5 text-slate-300 group-hover:translate-y-1 transition-transform"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div
+                                    class="step-details h-0 mt-0 space-y-4 overflow-hidden opacity-0 transition-all duration-300"
+                                >
+                                    <div
+                                        class="flex items-center gap-2 text-[#2D648B]"
+                                    >
+                                        <div
+                                            class="w-1.5 h-1.5 rounded-full bg-[#2D648B]"
+                                        >
+                                        </div>
+                                        <p
+                                            class="text-xs font-black uppercase tracking-widest"
+                                        >
+                                            Fonctionnalité
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-slate-100"
+                                    >
+                                        <p
+                                            class="text-slate-900 font-bold text-sm mb-2"
+                                        >
+                                            Équipements terminaux
+                                        </p>
+                                        <ul class="space-y-2">
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#2D648B]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Sanitaires & Robinetterie
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#2D648B]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Menuiseries & Portes
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p
+                                        class="text-[11px] text-slate-400 italic pl-2 border-l-2 border-slate-100"
+                                    >
+                                        Installation des équipements qui
+                                        permettent d'utiliser les locaux
+                                        quotidiennement.
+                                    </p>
+                                </div>
+                            </button>
+
+                            <!-- Phase 5 -->
+                            <button
+                                class="step-btn w-full text-left group p-6 rounded-2xl border-2 border-slate-100 hover:border-[#2D648B]/30 transition-all"
+                                data-phase="5"
+                            >
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-black italic group-hover:bg-[#2D648B]/10 group-hover:text-[#2D648B] transition-colors"
+                                        >
+                                            05
+                                        </div>
+                                        <h5
+                                            class="text-lg font-black text-slate-400 group-hover:text-slate-900 transition-colors"
+                                        >
+                                            Finitions
+                                        </h5>
+                                    </div>
+                                    <svg
+                                        class="w-5 h-5 text-slate-300 group-hover:translate-y-1 transition-transform"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div
+                                    class="step-details h-0 mt-0 space-y-4 overflow-hidden opacity-0 transition-all duration-300"
+                                >
+                                    <div
+                                        class="flex items-center gap-2 text-[#2D648B]"
+                                    >
+                                        <div
+                                            class="w-1.5 h-1.5 rounded-full bg-[#2D648B]"
+                                        >
+                                        </div>
+                                        <p
+                                            class="text-xs font-black uppercase tracking-widest"
+                                        >
+                                            Esthétique & Confort
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-slate-100"
+                                    >
+                                        <p
+                                            class="text-slate-900 font-bold text-sm mb-2"
+                                        >
+                                            Touches finales
+                                        </p>
+                                        <ul class="space-y-2">
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#2D648B]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Peintures & Sols (Tapis)
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 text-slate-600 text-xs"
+                                            >
+                                                <svg
+                                                    class="w-3.5 h-3.5 text-[#2D648B]"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    ><path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    ></path>
+                                                </svg>
+                                                Luminaires & Signalétique
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p
+                                        class="text-[11px] text-slate-400 italic pl-2 border-l-2 border-slate-100"
+                                    >
+                                        La phase finale qui donne son âme au
+                                        projet et le rend accueillant pour les
+                                        fidèles.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="don" class="py-32 px-6 overflow-hidden bg-slate-50 relative">
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-[#2D648B]/5 rounded-full blur-[100px] -mr-48 -mt-48"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-96 h-96 bg-[#5EB363]/5 rounded-full blur-[100px] -ml-48 -mb-48"
+        >
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <div
+                class="relative bg-[#2D648B] rounded-[3rem] p-8 md:p-16 shadow-2xl overflow-hidden"
+            >
+                <div
+                    class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_#ffffff_1px,_transparent_1px)] bg-[length:24px_24px]"
+                >
+                </div>
+                <div
+                    class="absolute -bottom-24 -right-24 w-64 h-64 bg-[#5EB363] rounded-full blur-[100px] opacity-30"
+                >
+                </div>
+
+                <div class="relative z-10 text-center text-white mb-16">
+                    <h2
+                        id="donation-title"
+                        tabindex="-1"
+                        class="text-4xl md:text-5xl font-black mb-6 leading-tight italic outline-none"
+                    >
+                        Soutenir la <br /><span
+                            class="underline decoration-[#5EB363] decoration-8 underline-offset-4"
+                            >Rénovation.</span
+                        >
+                    </h2>
+                    <p
+                        class="text-blue-100 text-lg max-w-xl mx-auto font-medium leading-relaxed"
+                    >
+                        Votre don est une Sadaqa Jariya qui profitera à la
+                        communauté. Sélectionnez votre mode de contribution
+                        sécurisé.
+                    </p>
+                </div>
+
+                <!-- Live Progress Bar -->
+                <div class="max-w-3xl mx-auto mb-20 relative px-4 lg:px-0">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-center md:items-end gap-6 mb-8"
+                    >
+                        <div class="text-center md:text-left">
+                            <div
+                                class="flex items-baseline justify-center md:justify-start gap-3 text-white"
+                            >
+                                <span
+                                    id="collected-amount"
+                                    class="text-6xl md:text-7xl font-black tabular-nums tracking-tighter min-w-[120px] h-16 rounded bg-white/5 animate-shimmer"
+                                ></span>
+                                <span
+                                    class="text-2xl font-bold text-white/30 italic"
+                                    >/ 250 000 €</span
+                                >
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col items-center md:items-end gap-3"
+                        >
+                            <div
+                                id="percentage-badge"
+                                class="inline-flex items-center gap-2.5 px-4 py-2 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-xl shadow-2xl"
+                            >
+                                <div
+                                    class="w-2 h-2 rounded-full bg-[#5EB363] animate-pulse"
+                                >
+                                </div>
+                                <span
+                                    id="percentage-text"
+                                    class="text-white font-black text-lg min-w-[40px] h-6 rounded bg-white/5 animate-shimmer"
+                                ></span>
+                            </div>
+                            <p
+                                class="text-blue-200/50 text-[10px] font-bold uppercase tracking-widest"
+                            >
+                                Objectif Minimum
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="h-5 w-full bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-sm relative overflow-hidden shadow-inner"
+                    >
+                        <div
+                            id="progress-bar"
+                            class="h-full bg-gradient-to-r from-[#5EB363] via-[#86efac] to-[#5EB363] bg-[length:200%_auto] animate-gradient rounded-full transition-all duration-[2000ms] ease-out shadow-[0_0_20px_rgba(94,179,99,0.3)]"
+                            style="width: 0%"
+                        >
+                            <div
+                                class="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-[length:30px_30px] opacity-20 animate-slide"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <!-- Stripe -->
+                    <div
+                        class="bg-white rounded-[2.5rem] p-4 shadow-xl min-h-[600px] flex flex-col items-center overflow-hidden"
+                    >
+                        <div
+                            id="loading-spinner"
+                            class="flex flex-col items-center justify-center py-32 animate-pulse w-full"
+                        >
+                            <div
+                                class="w-12 h-12 border-4 border-[#635BFF] border-t-transparent rounded-full animate-spin mb-4"
+                            >
+                            </div>
+                            <p
+                                class="text-slate-400 font-bold uppercase tracking-widest text-xs"
+                            >
+                                Chargement sécurisé...
+                            </p>
+                        </div>
+                        <div id="checkout" class="w-full"></div>
+                    </div>
+
+                    <script is:inline src="https://js.stripe.com/v3/"></script>
+                    <script is:inline>
+                        const stripe = Stripe(
+                            "pk_live_51MrgwnBg3GJXa4BP4VkSdwQrNkUcqjVJGQm2AvDQYiUbggTPNeYmTa3c2ktFG8NE9SHRLjFkJoxpGVzZUDwvAOac007G0v8plC"
+                        );
+                        async function initialize() {
+                            try {
+                                const response = await fetch(
+                                    "/.netlify/functions/checkout",
+                                    {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                        },
+                                        body: JSON.stringify({}),
+                                    }
+                                );
+                                if (!response.ok)
+                                    throw new Error(
+                                        `HTTP error! status: ${response.status}`
+                                    );
+                                const { clientSecret, error } =
+                                    await response.json();
+                                if (error) throw new Error(error);
+                                const checkout =
+                                    await stripe.initEmbeddedCheckout({
+                                        clientSecret,
+                                    });
+                                document.getElementById(
+                                    "loading-spinner"
+                                ).style.display = "none";
+
+                                // Save scroll position to prevent Stripe focus jump
+                                const scrollPos = window.scrollY;
+                                await checkout.mount("#checkout");
+                                // Wait a bit for Stripe to finish its autofocus attempt then restore
+                                setTimeout(
+                                    () => window.scrollTo(0, scrollPos),
+                                    10
+                                );
+                            } catch (e) {
+                                console.error(
+                                    "Stripe Initialization Error:",
+                                    e
+                                );
+                                document.getElementById(
+                                    "checkout"
+                                ).innerHTML = `<div class="p-12 text-center"><p class="text-red-500 font-bold">Erreur : ${e.message}</p></div>`;
+                            }
+                        }
+                        initialize();
+
+                        // Donation Progress Logic
+                        const collectedEl =
+                            document.getElementById("collected-amount");
+                        const percentageTextEl =
+                            document.getElementById("percentage-text");
+                        const progressBarEl =
+                            document.getElementById("progress-bar");
+
+                        async function fetchProgress() {
+                            try {
+                                const response = await fetch(
+                                    `/.netlify/functions/stripe-progress?t=${new Date().getTime()}`,
+                                    { cache: "no-store" }
+                                );
+                                const data = await response.json();
+
+                                if (data.collected !== undefined) {
+                                    // Remove skeleton states
+                                    collectedEl.classList.remove(
+                                        "animate-shimmer",
+                                        "bg-white/5"
+                                    );
+                                    percentageTextEl.classList.remove(
+                                        "animate-shimmer",
+                                        "bg-white/5"
+                                    );
+
+                                    animateValue(
+                                        collectedEl,
+                                        0,
+                                        data.collected,
+                                        2000,
+                                        " €"
+                                    );
+                                    animateValue(
+                                        percentageTextEl,
+                                        0,
+                                        data.percentage,
+                                        2000,
+                                        "%"
+                                    );
+
+                                    const heroCollectedEl =
+                                        document.getElementById(
+                                            "hero-collected-text"
+                                        );
+                                    const heroPercentageEl =
+                                        document.getElementById(
+                                            "hero-percentage"
+                                        );
+                                    const heroProgressBarEl =
+                                        document.getElementById(
+                                            "hero-progress-bar"
+                                        );
+
+                                    if (heroPercentageEl) {
+                                        heroPercentageEl.textContent =
+                                            data.percentage + "%";
+                                    }
+
+                                    if (heroCollectedEl) {
+                                        heroCollectedEl.classList.remove(
+                                            "animate-shimmer",
+                                            "bg-slate-50"
+                                        );
+                                        heroCollectedEl.textContent =
+                                            data.collected.toLocaleString() +
+                                            " € / 250 000 €";
+                                    }
+
+                                    // Smoothly grow the bars after a small delay
+                                    setTimeout(() => {
+                                        progressBarEl.style.width =
+                                            data.percentage + "%";
+                                        if (heroProgressBarEl)
+                                            heroProgressBarEl.style.width =
+                                                data.percentage + "%";
+                                    }, 300);
+                                }
+                            } catch (e) {
+                                console.error("Progress fetch error:", e);
+                                // Fallback values if API fails
+                                collectedEl.textContent = "1 830 €";
+                                percentageTextEl.textContent = "1%";
+                                progressBarEl.style.width = "1%";
+                            }
+                        }
+
+                        function animateValue(
+                            obj,
+                            start,
+                            end,
+                            duration,
+                            suffix = ""
+                        ) {
+                            let startTimestamp = null;
+                            const step = (timestamp) => {
+                                if (!startTimestamp) startTimestamp = timestamp;
+                                const progress = Math.min(
+                                    (timestamp - startTimestamp) / duration,
+                                    1
+                                );
+                                const current = Math.floor(
+                                    progress * (end - start) + start
+                                );
+                                obj.innerHTML =
+                                    current.toLocaleString() + suffix;
+                                if (progress < 1) {
+                                    window.requestAnimationFrame(step);
+                                }
+                            };
+                            window.requestAnimationFrame(step);
+                        }
+
+                        // Run on load
+                        fetchProgress();
+                    </script>
+
+                    <!-- RIB & Details -->
+                    <div class="space-y-8">
+                        <div
+                            class="bg-white/10 backdrop-blur-md rounded-[2.5rem] p-8 md:p-10 border border-white/20 text-white"
+                        >
+                            <span
+                                class="text-xs font-bold uppercase tracking-widest text-[#5EB363]"
+                                >Virement Bancaire</span
+                            >
+                            <h3 class="text-3xl font-black mt-2 mb-8">
+                                Informations RIB
+                            </h3>
+                            <div class="space-y-6">
+                                <div
+                                    class="bg-white/5 rounded-2xl p-6 border border-white/10 font-mono relative group/copy"
+                                >
+                                    <p
+                                        class="text-[10px] font-bold uppercase text-blue-200 mb-2 tracking-widest"
+                                    >
+                                        IBAN
+                                    </p>
+                                    <div
+                                        class="flex items-center justify-between gap-4"
+                                    >
+                                        <p
+                                            id="iban-text"
+                                            class="text-lg md:text-xl break-all leading-tight"
+                                        >
+                                            FR76 3000 3043 3500 0500 1045 210
+                                        </p>
+                                        <button
+                                            class="copy-btn shrink-0 p-2.5 bg-white/10 hover:bg-[#5EB363] rounded-xl transition-all border border-white/10"
+                                            data-target="iban-text"
+                                        >
+                                            <svg
+                                                class="w-4 h-4"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                                ><path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center gap-4 text-sm text-blue-200 font-medium"
+                                >
+                                    <div class="p-2 bg-white/10 rounded-lg">
+                                        <svg
+                                            class="w-6 h-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                            ><path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <span>Société Générale • Annemasse</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-[#5EB363] rounded-[2rem] p-8 text-white shadow-lg flex items-center gap-6"
+                        >
+                            <div
+                                class="hidden sm:flex shrink-0 w-16 h-16 bg-white/20 rounded-full items-center justify-center"
+                            >
+                                <svg
+                                    class="w-8 h-8"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.954 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-lg font-black italic">
+                                    Déduction fiscale de 66%
+                                </p>
+                                <p class="text-sm opacity-90 mt-1">
+                                    Un don de 100€ ne vous coûte que 34€.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Script -->
+    <script is:inline>
+        document.querySelectorAll(".step-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".step-btn").forEach((b) => {
+                    b.classList.remove("border-[#5EB363]", "bg-[#5EB363]/5");
+                    b.classList.add("border-slate-100");
+                    const details = b.querySelector(".step-details");
+                    details.style.height = "0";
+                    details.style.marginTop = "0";
+                    details.style.opacity = "0";
+                    const title = b.querySelector("h5");
+                    const num = b.querySelector(".w-10");
+                    const svg = b.querySelector("svg");
+                    if (title) title.classList.add("text-slate-400");
+                    if (num) {
+                        num.classList.add("bg-slate-100", "text-slate-400");
+                        num.classList.remove("bg-[#5EB363]", "text-white");
+                    }
+                    if (svg) svg.classList.remove("rotate-180");
+                });
+                btn.classList.add("border-[#5EB363]", "bg-[#5EB363]/5");
+                btn.classList.remove("border-slate-100");
+                const activeDetails = btn.querySelector(".step-details");
+                activeDetails.style.height = "auto";
+                activeDetails.style.marginTop = "1.5rem";
+                activeDetails.style.opacity = "1";
+                const activeTitle = btn.querySelector("h5");
+                const activeNum = btn.querySelector(".w-10");
+                const activeSvg = btn.querySelector("svg");
+                if (activeTitle) activeTitle.classList.remove("text-slate-400");
+                if (activeNum) {
+                    activeNum.classList.remove(
+                        "bg-slate-100",
+                        "text-slate-400"
+                    );
+                    activeNum.classList.add("bg-[#5EB363]", "text-white");
+                }
+                if (activeSvg) activeSvg.classList.add("rotate-180");
+            });
+        });
+        document.querySelectorAll(".copy-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const targetId = btn.getAttribute("data-target");
+                const text = document.getElementById(targetId).innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalHtml = btn.innerHTML;
+                    btn.innerHTML =
+                        '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+                    btn.classList.add("bg-[#5EB363]");
+                    setTimeout(() => {
+                        btn.innerHTML = originalHtml;
+                        btn.classList.remove("bg-[#5EB363]");
+                    }, 2000);
+                });
+            });
+        });
+    </script>
 </Layout>
