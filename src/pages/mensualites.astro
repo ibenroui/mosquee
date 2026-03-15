@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const title = "Campagne 1000 m² | Projet Rénovation CCMA";
+const title = "Campagne 600 m² | Projet Rénovation CCMA";
 const description =
     "Financez des m² pour la mosquée. Choisissez votre surface et réglez en une ou plusieurs fois.";
 ---
@@ -253,7 +253,7 @@ const description =
                                 type="number"
                                 id="custom-total"
                                 placeholder="150"
-                                min="10"
+                                min="1"
                                 class="w-full bg-transparent text-center text-3xl md:text-4xl font-black text-[#1A202C] outline-none placeholder-slate-300"
                             />
                             <span
@@ -265,7 +265,7 @@ const description =
                             id="custom-error"
                             class="hidden text-sm font-bold text-red-500 mt-4 animate-fade-in"
                         >
-                            Le montant minimum est de 10€
+                            Le montant minimum est de 1€
                         </p>
                     </div>
                 </div>
@@ -579,7 +579,7 @@ const description =
             ) {
                 // Custom amount selected
                 const val = document.getElementById("custom-total").value;
-                if (!val || isNaN(val) || val < 10) {
+                if (!val || isNaN(val) || val < 1) {
                     if (errorElement) errorElement.classList.remove("hidden");
                     return;
                 }
