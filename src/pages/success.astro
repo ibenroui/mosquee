@@ -1,0 +1,156 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "JazakAllahu kheyran | Projet Rénovation CCMA";
+const description =
+    "Merci pour votre générosité soutenant le projet de la mosquée.";
+---
+
+<Layout title={title} description={description}>
+    <section
+        class="py-16 md:py-32 bg-[#FDFCF9] min-h-screen flex items-center justify-center relative z-20"
+    >
+        <div class="max-w-3xl w-full mx-auto px-4 md:px-6">
+            <div
+                class="w-full bg-white rounded-3xl md:rounded-[3rem] p-8 md:p-16 shadow-2xl border border-slate-100 flex flex-col items-center justify-center text-center relative overflow-hidden"
+            >
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#5EB363]/20 to-transparent blur-3xl pointer-events-none"
+                >
+                </div>
+
+                <div
+                    class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-[#5EB363] to-[#4ea253] text-white rounded-full flex items-center justify-center mb-6 md:mb-8 mx-auto relative shadow-xl shadow-[#5EB363]/30"
+                >
+                    <svg
+                        class="w-10 h-10 md:w-12 md:h-12 relative z-10"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2.5"
+                            d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-3xl md:text-5xl font-black text-[#1A202C] mb-4 tracking-tight"
+                >
+                    JazakAllahu kheyran
+                </h3>
+                <p
+                    class="text-base md:text-lg text-slate-500 font-medium leading-relaxed mb-10 md:mb-12 max-w-xl mx-auto relative z-10"
+                >
+                    Votre générosité bâtit l'avenir de la communauté. Qu'Allah
+                    l'accepte et l'alourdisse dans votre balance. Vous pouvez
+                    arrêter votre abonnement à tout moment grâce à ce lien :
+                    <button
+                        id="inline-portal-link"
+                        class="text-[#2D648B] font-bold underline hover:text-slate-900 transition-colors cursor-pointer"
+                        >Gérer mon abonnement</button
+                    >
+                    ou en contactant les membres du bureau.
+                </p>
+                <div
+                    class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto relative z-10"
+                >
+                    <button
+                        id="portal-btn"
+                        class="w-full sm:w-auto px-8 py-4.5 bg-[#1A202C] text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-slate-800 transition-all hover:scale-[1.02] active:scale-95 shadow-xl group"
+                    >
+                        <svg
+                            class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                            ></path><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        Gérer mon abonnement
+                    </button>
+                    <a
+                        href="/#don"
+                        class="w-full sm:w-auto px-8 py-4.5 bg-slate-100 text-[#1A202C] text-center rounded-2xl font-bold hover:bg-slate-200 transition-all hover:scale-[1.02] active:scale-95"
+                    >
+                        Retour au site
+                    </a>
+                </div>
+                <!-- Fix visual jitter when error appears -->
+                <div class="h-6 mt-4 flex items-center justify-center">
+                    <p
+                        id="portal-error"
+                        class="text-sm text-red-500 font-bold hidden"
+                    >
+                        Une erreur est survenue lors de la création du lien.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script is:inline>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionId = urlParams.get("session_id");
+
+            const manageSubscription = async () => {
+                if (!sessionId) return;
+
+                const btn = document.getElementById("portal-btn");
+                const errorText = document.getElementById("portal-error");
+                const originalText = btn.innerHTML;
+
+                btn.innerHTML = "Chargement...";
+                btn.style.opacity = "0.7";
+                errorText.classList.add("hidden");
+
+                try {
+                    const response = await fetch(
+                        "/.netlify/functions/customer-portal",
+                        {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ session_id: sessionId }),
+                        }
+                    );
+
+                    const data = await response.json();
+
+                    if (data.url) {
+                        window.location.href = data.url;
+                    } else {
+                        throw new Error(data.error || "Portal session failed");
+                    }
+                } catch (e) {
+                    console.error("Portal error:", e);
+                    btn.innerHTML = originalText;
+                    btn.style.opacity = "1";
+                    errorText.classList.remove("hidden");
+                }
+            };
+
+            const portalBtn = document.getElementById("portal-btn");
+            if (portalBtn) {
+                portalBtn.addEventListener("click", manageSubscription);
+            }
+
+            const inlineLink = document.getElementById("inline-portal-link");
+            if (inlineLink) {
+                inlineLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    manageSubscription();
+                });
+            }
+        });
+    </script>
+</Layout>

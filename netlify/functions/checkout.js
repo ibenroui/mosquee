@@ -54,13 +54,14 @@ export const handler = async (event, context) => {
         }
 
         // Define origin to handle return URL dynamically if possible, or fallback to hardcoded
-        const origin = event.headers.origin || 'https://mosquee-annemasse.com/';
+        const origin = event.headers.origin || 'https://mosquee-annemasse.com';
+        const returnUrlPath = mode === 'subscription' ? '/success?session_id={CHECKOUT_SESSION_ID}' : '/?session_id={CHECKOUT_SESSION_ID}#don';
 
         const session = await stripe.checkout.sessions.create({
             ui_mode: 'embedded',
             line_items: [lineItem],
             mode: mode,
-            return_url: `${origin}/?session_id={CHECKOUT_SESSION_ID}`,
+            return_url: `${origin}${returnUrlPath}`,
         });
 
         console.log(`Session created: ${session.id} (mode: ${mode})`);
