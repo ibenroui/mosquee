@@ -38,7 +38,7 @@ export const handler = async (event, context) => {
                 currency: 'eur',
                 unit_amount: customAmount * 100, // Stripe expects cents
                 ...(mode === 'subscription' && { recurring: { interval: 'month' } }),
-                product: process.env.STRIPE_PRODUCT_ID || 'prod_S2Q0ozgEtfPWMX',
+                product: 'prod_S2Q0ozgEtfPWMX',
             });
 
             lineItem = {
